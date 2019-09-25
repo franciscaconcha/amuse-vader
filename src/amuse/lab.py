@@ -77,6 +77,8 @@ from amuse.community.mmams.interface import MakeMeAMassiveStar, MakeMeAMassiveSt
 
 from amuse.community.hop.interface import Hop, HopInterface
 
+from amuse.community.vader.interface import vader, vaderInterface
+
 from amuse.support.console import set_printing_strategy
 from amuse.support.console import get_current_printing_strategy
 from amuse.datamodel import particle_attributes

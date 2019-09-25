@@ -39,7 +39,7 @@ def make_map(sph,N=100,L=1):
 if __name__ == "__main__":
 
     N=20000
-    tend=1. | units.yr
+    tend=10. | units.yr
     Mstar=1. | units.MSun
         
     convert=nbody_system.nbody_to_si(Mstar, 1. | units.AU)

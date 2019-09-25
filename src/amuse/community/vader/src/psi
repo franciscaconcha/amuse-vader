@@ -1,0 +1,494 @@
+advanceBE.c:  for (i=0; i<grd->nr; i++) {
+advanceBE.c:    nHist = 3*grd->nr;
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    nHist = 2*grd->nr;
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    for (i=1; i<=grd->nr; i++) w->alpha_g[i] = alpha_val;
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    for (i=0; i<grd->nr; i++) w->eSrc[i] = eSrc[i];
+advanceBE.c:  for (i=0; i<grd->nr; i++) {
+advanceBE.c:  w->alpha_g[grd->nr+1] = w->alpha_g[grd->nr];
+advanceBE.c:  for (i=0; i<=grd->nr; i++) {
+advanceBE.c:    w->fmNew_h[i] = -grd->g_h[i] *
+advanceBE.c:      (SQR(grd->r_g[i+1])*(1-grd->beta_g[i+1]) * 
+advanceBE.c:       SQR(grd->r_g[i])*(1-grd->beta_g[i]) * 
+advanceBE.c:      for (i=1; i<=grd->nr; i++) 
+advanceBE.c:      for (i=1; i<=grd->nr; i++) {
+advanceBE.c:      w->alpha_g[grd->nr+1] = w->alpha_g[grd->nr];
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    gsl_vector_set(w->rhs_g, grd->nr+1, pOut);
+advanceBE.c:      for (i=0; i<=grd->nr+1; i++)
+advanceBE.c:      if (grd->linear == 1) {
+advanceBE.c:	for (i=1; i<=grd->nr+1; i++)
+advanceBE.c:	    ((grd->r_g[i]-grd->r_h[i-1]) * w->hint_g[i-1] +
+advanceBE.c:	     (grd->r_h[i-1]-grd->r_g[i-1]) * w->hint_g[i]) /
+advanceBE.c:	    (grd->r_g[i] - grd->r_g[i-1]);
+advanceBE.c:	for (i=1; i<=grd->nr+1; i++)
+advanceBE.c:	    (log(grd->r_g[i]/grd->r_h[i-1]) * w->hint_g[i-1] +
+advanceBE.c:	     log(grd->r_h[i-1]/grd->r_g[i-1]) * w->hint_g[i]) /
+advanceBE.c:	    log(grd->r_g[i]/grd->r_g[i-1]);
+advanceBE.c:      for (i=1; i<=grd->nr+1; i++) {
+advanceBE.c:      ppmExtrap(grd->nr+2, grd->dr_g, w->hint_g, w->hintL_g, w->hintR_g, 
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    for (i=1; i<=grd->nr; i++) {
+advanceBE.c:      if (w->fmNew_h[i] > 0) h_up = w->hintR_g[i] + grd->psiEff_h[i];
+advanceBE.c:      else h_up = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceBE.c:		     / grd->area[i-1] *
+advanceBE.c:		     (grd->g_h[i]*SQR(grd->r_g[i+1]) *
+advanceBE.c:		      (1-grd->beta_g[i+1]) *
+advanceBE.c:		      (grd->psiEff_g[i]
+advanceBE.c:		      M_PI*grd->r_h[i]*grd->vphi_h[i] *
+advanceBE.c:		      (1-grd->beta_h[i])));
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:      if (w->fmNew_h[i] > 0) h_up = w->hintR_g[i] + grd->psiEff_h[i];
+advanceBE.c:      else h_up = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceBE.c:		     / grd->area[i] *
+advanceBE.c:		     (grd->g_h[i]*SQR(grd->r_g[i]) *
+advanceBE.c:		      (1-grd->beta_g[i]) *
+advanceBE.c:		      (grd->psiEff_g[i+1] 
+advanceBE.c:		      M_PI*grd->r_h[i]*grd->vphi_h[i] *
+advanceBE.c:		      (1-grd->beta_h[i])));
+advanceBE.c:    gsl_vector_set(w->ld_g, grd->nr, -qOut);
+advanceBE.c:    for (i=1; i<=grd->nr; i++) {
+advanceBE.c:      if (w->fmNew_h[i-1] > 0) h_up = w->hintR_g[i-1] + grd->psiEff_h[i-1];
+advanceBE.c:      else h_up = w->hintL_g[i] + grd->psiEff_h[i-1];
+advanceBE.c:      if (w->fmNew_h[i] > 0) h_up1 = w->hintR_g[i] + grd->psiEff_h[i];
+advanceBE.c:      else h_up1 = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceBE.c:		     / grd->area[i-1] *
+advanceBE.c:		     ((grd->g_h[i]*
+advanceBE.c:		       (h_up1 - grd->psiEff_g[i]
+advanceBE.c:		       grd->g_h[i-1]*
+advanceBE.c:		       (h_up - grd->psiEff_g[i]
+advanceBE.c:		      SQR(grd->r_g[i]) * (1-grd->beta_g[i]) +
+advanceBE.c:		      M_PI*(grd->r_h[i]*grd->vphi_h[i]*
+advanceBE.c:			    (1-grd->beta_h[i]) -
+advanceBE.c:			    grd->r_h[i-1]*grd->vphi_h[i-1]*
+advanceBE.c:			    (1-grd->beta_h[i-1]))));
+advanceBE.c:    for (i=0; i<=grd->nr; i++)
+advanceBE.c:      w->fmNew_h[i] = -grd->g_h[i] * 
+advanceBE.c:	(SQR(grd->r_g[i+1])*
+advanceBE.c:	 (1-grd->beta_g[i+1]) *
+advanceBE.c:	 SQR(grd->r_g[i])*
+advanceBE.c:	 (1-grd->beta_g[i]) * 
+advanceBE.c:      for (i=0; i<grd->nr; i++) w->massSrcNew[i] = massSrc_val;
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:      w->colTmp[i] = col[i] - dt/grd->area[i] * 
+advanceBE.c:      for (i=0; i<grd->nr; i++) {
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:      for (i=0; i<grd->nr; i++) {
+advanceBE.c:      w->presNew_g[grd->nr+1] = gsl_vector_get(w->presTmp_g, grd->nr+1);
+advanceBE.c:  for (i=0; i<grd->nr; i++) {
+advanceBE.c:  mBndTemp[1] += dt*w->fmNew_h[grd->nr];
+advanceBE.c:  if (w->fmNew_h[0] > 0) h_up = w->hintR_g[0] + grd->psiEff_h[0];
+advanceBE.c:  else h_up = w->hintL_g[1] + grd->psiEff_h[0];
+advanceBE.c:  if (w->fmNew_h[grd->nr] > 0) 
+advanceBE.c:    h_up = w->hintR_g[grd->nr] + grd->psiEff_h[grd->nr];
+advanceBE.c:  else h_up = w->hintL_g[grd->nr+1] + grd->psiEff_h[grd->nr];
+advanceBE.c:  eBndTemp[1] += dt*h_up*w->fmNew_h[grd->nr];
+advanceBE.c:  eBndTemp[0] += dt*M_PI*grd->r_h[0]*grd->vphi_h[0]*(1.0-grd->beta_h[0]) *
+advanceBE.c:  eBndTemp[1] += dt*M_PI*grd->r_h[grd->nr]*grd->vphi_h[grd->nr]
+advanceBE.c:    *(1.0-grd->beta_h[grd->nr]) *
+advanceBE.c:    (w->presNew_g[grd->nr+1]*w->alpha_g[grd->nr+1] 
+advanceBE.c:     + w->presNew_g[grd->nr]*w->alpha_g[grd->nr]);
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:	(grd->psiEff_g[i+1] + 
+advanceBE.c:    for (i=0; i<grd->nr; i++)
+advanceBE.c:    for (i=0; i<grd->nr; i++) {
+advanceBE.c:      for (i=0; i<grd->nr; i++) eInt[i] = w->eIntNew[i];
+advanceBE.c:      for (i=0; i<grd->nr; i++) {
+advanceBE.c:      for (i=0; i<grd->nr; i++) eSrc[i] = w->eSrc[i];
+advanceCN.c:  for (i=0; i<grd->nr; i++) {
+advanceCN.c:    nHist = 3*grd->nr;
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    nHist = 2*grd->nr;
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    for (i=1; i<=grd->nr; i++) w->alpha_g[i] = alpha_val;
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    for (i=0; i<grd->nr; i++) w->eSrc[i] = eSrc[i];
+advanceCN.c:  w->alpha_g[grd->nr+1] = w->alpha_g[grd->nr];
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:	(grd->psiEff_g[i+1] + w->deltaLast[i]*pres[i]/col[i]);
+advanceCN.c:    for (i=0; i<grd->nr; i++) w->massSrcLast[i] = massSrc_val;
+advanceCN.c:    for (i=0; i<grd->nr; i++)
+advanceCN.c:    for (i=0; i<grd->nr; i++) w->intEnSrc[i] = intEnSrc_val;
+advanceCN.c:    for (i=0; i<=grd->nr+1; i++)
+advanceCN.c:    if (grd->linear == 1) {
+advanceCN.c:      for (i=1; i<=grd->nr+1; i++)
+advanceCN.c:	  ((grd->r_g[i]-grd->r_h[i-1]) * w->hint_g[i-1] +
+advanceCN.c:	   (grd->r_h[i-1]-grd->r_g[i-1]) * w->hint_g[i]) /
+advanceCN.c:	  (grd->r_g[i] - grd->r_g[i-1]);
+advanceCN.c:      for (i=1; i<=grd->nr+1; i++)
+advanceCN.c:	  (log(grd->r_g[i]/grd->r_h[i-1]) * w->hint_g[i-1] +
+advanceCN.c:	   log(grd->r_h[i-1]/grd->r_g[i-1]) * w->hint_g[i]) /
+advanceCN.c:	  log(grd->r_g[i]/grd->r_g[i-1]);
+advanceCN.c:    for (i=1; i<=grd->nr+1; i++) {
+advanceCN.c:    ppmExtrap(grd->nr+2, grd->dr_g, w->hint_g, w->hintL_g, w->hintR_g, 
+advanceCN.c:  for (i=0; i<=grd->nr; i++) {
+advanceCN.c:    w->fmLast_h[i] = w->fmNew_h[i] = -grd->g_h[i] *
+advanceCN.c:      (SQR(grd->r_g[i+1])*(1-grd->beta_g[i+1]) * 
+advanceCN.c:       SQR(grd->r_g[i])*(1-grd->beta_g[i]) * 
+advanceCN.c:    if (w->fmLast_h[i] > 0) h_up = w->hintR_g[i] + grd->psiEff_h[i];
+advanceCN.c:    else h_up = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceCN.c:    w->ftLast_h[i] = M_PI * grd->r_h[i] * grd->vphi_h[i] *
+advanceCN.c:      (1-grd->beta_h[i]) *
+advanceCN.c:  for (i=0; i<grd->nr; i++) {
+advanceCN.c:		   pres[i] - 0.5*dt/grd->area[i] *
+advanceCN.c:		    (grd->psiEff_g[i+1] + 
+advanceCN.c:  for (i=0; i<grd->nr; i++) w->intEnSrc[i] = 0.0;
+advanceCN.c:      for (i=1; i<=grd->nr; i++) 
+advanceCN.c:      for (i=1; i<=grd->nr; i++) {
+advanceCN.c:      w->alpha_g[grd->nr+1] = w->alpha_g[grd->nr];
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    gsl_vector_set(w->rhs_g, grd->nr+1, pOut);
+advanceCN.c:      for (i=0; i<=grd->nr+1; i++)
+advanceCN.c:      if (grd->linear == 1) {
+advanceCN.c:	for (i=1; i<=grd->nr+1; i++)
+advanceCN.c:	    ((grd->r_g[i]-grd->r_h[i-1]) * w->hint_g[i-1] +
+advanceCN.c:	     (grd->r_h[i-1]-grd->r_g[i-1]) * w->hint_g[i]) /
+advanceCN.c:	    (grd->r_g[i] - grd->r_g[i-1]);
+advanceCN.c:	for (i=1; i<=grd->nr+1; i++)
+advanceCN.c:	    (log(grd->r_g[i]/grd->r_h[i-1]) * w->hint_g[i-1] +
+advanceCN.c:	     log(grd->r_h[i-1]/grd->r_g[i-1]) * w->hint_g[i]) /
+advanceCN.c:	    log(grd->r_g[i]/grd->r_g[i-1]);
+advanceCN.c:      for (i=1; i<=grd->nr+1; i++) {
+advanceCN.c:      ppmExtrap(grd->nr+2, grd->dr_g, w->hint_g, w->hintL_g, w->hintR_g, 
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    for (i=1; i<=grd->nr; i++) {
+advanceCN.c:      if (w->fmNew_h[i] > 0) h_up = w->hintR_g[i] + grd->psiEff_h[i];
+advanceCN.c:      else h_up = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceCN.c:		     / grd->area[i-1] *
+advanceCN.c:		     (grd->g_h[i]*SQR(grd->r_g[i+1]) *
+advanceCN.c:		      (1-grd->beta_g[i+1]) *
+advanceCN.c:		      (grd->psiEff_g[i]
+advanceCN.c:		      M_PI*grd->r_h[i]*grd->vphi_h[i] *
+advanceCN.c:		      (1-grd->beta_h[i])));
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:      if (w->fmNew_h[i] > 0) h_up = w->hintR_g[i] + grd->psiEff_h[i];
+advanceCN.c:      else h_up = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceCN.c:		     / grd->area[i] *
+advanceCN.c:		     (grd->g_h[i]*SQR(grd->r_g[i]) *
+advanceCN.c:		      (1-grd->beta_g[i]) *
+advanceCN.c:		      (grd->psiEff_g[i+1] 
+advanceCN.c:		      M_PI*grd->r_h[i]*grd->vphi_h[i] *
+advanceCN.c:		      (1-grd->beta_h[i])));
+advanceCN.c:    gsl_vector_set(w->ld_g, grd->nr, -qOut);
+advanceCN.c:    for (i=1; i<=grd->nr; i++) {
+advanceCN.c:      if (w->fmNew_h[i-1] > 0) h_up = w->hintR_g[i-1] + grd->psiEff_h[i-1];
+advanceCN.c:      else h_up = w->hintL_g[i] + grd->psiEff_h[i-1];
+advanceCN.c:      if (w->fmNew_h[i] > 0) h_up1 = w->hintR_g[i] + grd->psiEff_h[i];
+advanceCN.c:      else h_up1 = w->hintL_g[i+1] + grd->psiEff_h[i];
+advanceCN.c:		     / grd->area[i-1] *
+advanceCN.c:		     ((grd->g_h[i]*
+advanceCN.c:		       (h_up1 - grd->psiEff_g[i]
+advanceCN.c:		       grd->g_h[i-1]*
+advanceCN.c:		       (h_up - grd->psiEff_g[i]
+advanceCN.c:		      SQR(grd->r_g[i]) * (1-grd->beta_g[i]) +
+advanceCN.c:		      M_PI*(grd->r_h[i]*grd->vphi_h[i]*
+advanceCN.c:			    (1-grd->beta_h[i]) -
+advanceCN.c:			    grd->r_h[i-1]*grd->vphi_h[i-1]*
+advanceCN.c:			    (1-grd->beta_h[i-1]))));
+advanceCN.c:    for (i=0; i<=grd->nr; i++)
+advanceCN.c:      w->fmNew_h[i] = -grd->g_h[i] * 
+advanceCN.c:	(SQR(grd->r_g[i+1])*
+advanceCN.c:	 (1-grd->beta_g[i+1]) *
+advanceCN.c:	 SQR(grd->r_g[i])*
+advanceCN.c:	 (1-grd->beta_g[i]) * 
+advanceCN.c:      for (i=0; i<grd->nr; i++) w->massSrcNew[i] = massSrc_val;
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:      w->colTmp[i] = col[i] - dt/grd->area[i] * 0.5 *
+advanceCN.c:      for (i=0; i<grd->nr; i++) {
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:      for (i=0; i<grd->nr; i++) {
+advanceCN.c:      w->presNew_g[grd->nr+1] = gsl_vector_get(w->presTmp_g, grd->nr+1);
+advanceCN.c:  for (i=0; i<grd->nr; i++) {
+advanceCN.c:  mBndTemp[1] += 0.5*dt*(w->fmLast_h[grd->nr] + w->fmNew_h[grd->nr]);
+advanceCN.c:  eBndTemp[1] += 0.5*dt*(w->feLast_h[grd->nr] + w->ftLast_h[grd->nr]);
+advanceCN.c:  if (w->fmNew_h[0] > 0) h_up = w->hintR_g[0] + grd->psiEff_h[0];
+advanceCN.c:  else h_up = w->hintL_g[1] + grd->psiEff_h[0];
+advanceCN.c:  if (w->fmNew_h[grd->nr] > 0) 
+advanceCN.c:    h_up1 = w->hintR_g[grd->nr] + grd->psiEff_h[grd->nr];
+advanceCN.c:  else h_up1 = w->hintL_g[grd->nr+1] + grd->psiEff_h[grd->nr];
+advanceCN.c:  eBndTemp[1] += 0.5*dt*h_up1*w->fmNew_h[grd->nr];
+advanceCN.c:  eBndTemp[0] += 0.5*dt*M_PI*grd->r_h[0]*grd->vphi_h[0]*(1.0-grd->beta_h[0]) *
+advanceCN.c:  eBndTemp[1] += 0.5*dt*M_PI*grd->r_h[grd->nr]*grd->vphi_h[grd->nr]
+advanceCN.c:    *(1.0-grd->beta_h[grd->nr]) *
+advanceCN.c:    (w->presNew_g[grd->nr+1]*w->alpha_g[grd->nr+1] 
+advanceCN.c:     + w->presNew_g[grd->nr]*w->alpha_g[grd->nr]);
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:	(grd->psiEff_g[i+1] + 
+advanceCN.c:    for (i=0; i<grd->nr; i++)
+advanceCN.c:    for (i=0; i<grd->nr; i++) {
+advanceCN.c:      for (i=0; i<grd->nr; i++) eInt[i] = w->eIntNew[i];
+advanceCN.c:      for (i=0; i<grd->nr; i++) {
+advanceCN.c:      for (i=0; i<grd->nr; i++) eSrc[i] = w->eSrc[i];
+applyBC.c:    *pIn = ibc_pres_val / (grd->g_h[0]*alpha_g[0]*
+applyBC.c:			   (1-grd->beta_g[0])*SQR(grd->r_g[0]));
+applyBC.c:    *qIn = SQR(grd->r_g[1]/grd->r_g[0])*
+applyBC.c:      (1.0-grd->beta_g[1])/(1.0-grd->beta_g[0]);
+applyBC.c:      (M_PI*alpha_g[0]*grd->r_h[0]*grd->vphi_h[0]*(1-grd->beta_h[0]));
+applyBC.c:      (2.0*M_PI*SQR(grd->r_g[0])*alpha_g[0]*(1.0-grd->beta_g[0]));
+applyBC.c:    *qOut = SQR(grd->r_g[grd->nr] / grd->r_g[grd->nr+1]) *
+applyBC.c:      (1.0-grd->beta_g[grd->nr]) / (1.0-grd->beta_g[grd->nr+1]);
+applyBC.c:      / (grd->g_h[grd->nr]*alpha_g[grd->nr+1]*
+applyBC.c:	 (1-grd->beta_g[grd->nr+1])*SQR(grd->r_g[grd->nr+1]));
+applyBC.c:      (M_PI*alpha_g[grd->nr+1]*grd->r_h[grd->nr]*grd->vphi_h[grd->nr]
+applyBC.c:       *(1-grd->beta_h[grd->nr]));
+applyBC.c:      (2.0*M_PI*SQR(grd->r_g[grd->nr+1])*alpha_g[grd->nr+1]
+applyBC.c:       *(1.0-grd->beta_g[grd->nr+1]));
+applyBC.c:  pres_g[grd->nr+1] = (*qOut) * pres_g[grd->nr] + (*pOut);
+applyBC.c:      (grd->r_g[1]-grd->r_g[0]);
+applyBC.c:    hint_g[grd->nr+1] = obc_enth_val;
+applyBC.c:    hint_g[grd->nr+1] = hint_g[grd->nr] + obc_enth_val *
+applyBC.c:      (grd->r_g[grd->nr+1]-grd->r_g[grd->nr]);
+checkpoint.c:  fwrite(&(grd->nr), sizeof(unsigned long), 1, fp);
+checkpoint.c:  fwrite(&(grd->linear), sizeof(bool), 1, fp);
+checkpoint.c:  fwrite(grd->r_g, sizeof(double), grd->nr+2, fp);
+checkpoint.c:  fwrite(grd->r_h, sizeof(double), grd->nr+1, fp);
+checkpoint.c:  fwrite(grd->dr_g, sizeof(double), grd->nr+2, fp);
+checkpoint.c:  fwrite(grd->area, sizeof(double), grd->nr, fp);
+checkpoint.c:  fwrite(grd->vphi_g, sizeof(double), grd->nr+2, fp);
+checkpoint.c:  fwrite(grd->vphi_h, sizeof(double), grd->nr+1, fp);
+checkpoint.c:  fwrite(grd->beta_g, sizeof(double), grd->nr+2, fp);
+checkpoint.c:  fwrite(grd->beta_h, sizeof(double), grd->nr+1, fp);
+checkpoint.c:  fwrite(grd->psiEff_g, sizeof(double), grd->nr+2, fp);
+checkpoint.c:  fwrite(grd->psiEff_h, sizeof(double), grd->nr+1, fp);
+checkpoint.c:  fwrite(grd->g_h, sizeof(double), grd->nr+1, fp);
+checkpoint.c:  fwrite(colOut, sizeof(double), grd->nr*nOut, fp);
+checkpoint.c:  fwrite(presOut, sizeof(double), grd->nr*nOut, fp);
+checkpoint.c:    fwrite(eIntOut, sizeof(double), grd->nr*nOut, fp);
+checkpoint.c:    fwrite(mSrcOut, sizeof(double), grd->nr*nOut, fp);
+checkpoint.c:    fwrite(eSrcOut, sizeof(double), grd->nr*nOut, fp);
+checkpoint.c:    fwrite(userOut, sizeof(double), grd->nr*nOut*nUserOut, fp);
+driver.c:		      eBndOut+2*(*nOut), mSrcOut+grd->nr*(*nOut),
+driver.c:		      eSrcOut+grd->nr*(*nOut), params, nUserOut,
+driver.c:		      userOut+nUserOut*grd->nr*(*nOut));
+driver.c:			  mSrcOut+grd->nr*(*nOut),
+driver.c:			  eSrcOut+grd->nr*(*nOut),
+driver.c:			  mSrcOut+grd->nr*(*nOut),
+driver.c:			  eSrcOut+grd->nr*(*nOut),
+driver.c:		       eBndOut+2*(*nOut), mSrcOut+grd->nr*(*nOut),
+driver.c:		       eSrcOut+grd->nr*(*nOut), params, nUserOut,
+driver.c:		       userOut+nUserOut*grd->nr*(*nOut));
+driver.c:      for (i=0; i<grd->nr; i++) {
+driver.c:	colOut[i + (*nOut)*grd->nr] = col[i];
+driver.c:	presOut[i + (*nOut)*grd->nr] = pres[i];
+driver.c:	if (eos_func) eIntOut[i + (*nOut)*grd->nr] = eInt[i];
+driver.c:	  for (i=0; i<grd->nr; i++) {
+driver.c:	    mSrcOut[((*nOut)+1)*grd->nr+i] = mSrcOut[(*nOut)*grd->nr+i];
+driver.c:	    eSrcOut[((*nOut)+1)*grd->nr+i] = eSrcOut[(*nOut)*grd->nr+i];
+driver.c:	  for (i=0; i<grd->nr; i++) {
+driver.c:	    eSrcOut[((*nOut)+1)*grd->nr+i] = eSrcOut[(*nOut)*grd->nr+i];
+driver.c:	      for (i=0; i<grd->nr; i++)
+driver.c:		userOut[((*nOut)+1)*nUserOut*grd->nr + j*grd->nr + i] =
+driver.c:		  userOut[(*nOut)*nUserOut*grd->nr + j*grd->nr + i];
+driver.c:      for (i=0; i<grd->nr; i++) {
+driver.c:	colOut[i + (*nOut)*grd->nr] = col[i];
+driver.c:	presOut[i + (*nOut)*grd->nr] = pres[i];
+driver.c:	if (eos_func) eIntOut[i + (*nOut)*grd->nr] = eInt[i];
+getNextIterate.c:  for (i=0; i<grd->nr; i++) {
+getNextIterate.c:  for (i=0; i<grd->nr; i++) {
+getNextIterate.c:    w->colHist[i + colptr*grd->nr] = w->colTmp[i];
+getNextIterate.c:    w->presHist[i + colptr*grd->nr] = gsl_vector_get(w->presTmp_g, i+1);
+getNextIterate.c:      w->eIntHist[i + colptr*grd->nr] = w->eIntTmp[i];
+getNextIterate.c:  for (i=0; i<grd->nr; i++) {
+getNextIterate.c:    w->colResid[i + colptr*grd->nr] = 
+getNextIterate.c:      (w->colHist[i+colptr*grd->nr]-w->colNew[i]) / 
+getNextIterate.c:      w->colHist[i+colptr*grd->nr];
+getNextIterate.c:    if (fabs(w->colResid[i + colptr*grd->nr]) > *residMax) {
+getNextIterate.c:      *residMax = fabs(w->colResid[i + colptr*grd->nr]);
+getNextIterate.c:    w->presResid[i + colptr*grd->nr] = 
+getNextIterate.c:      (w->presHist[i+colptr*grd->nr]-w->presNew_g[i+1]) / 
+getNextIterate.c:      w->presHist[i+colptr*grd->nr];
+getNextIterate.c:    if (fabs(w->presResid[i + colptr*grd->nr]) > *residMax) {
+getNextIterate.c:      *residMax = fabs(w->presResid[i + colptr*grd->nr]);
+getNextIterate.c:      w->eIntResid[i + colptr*grd->nr] = 
+getNextIterate.c:	(w->eIntHist[i+colptr*grd->nr]-w->eIntNew[i]) / 
+getNextIterate.c:	w->eIntHist[i+colptr*grd->nr];
+getNextIterate.c:      if (fabs(w->eIntResid[i + colptr*grd->nr]) > *residMax)
+getNextIterate.c:	*residMax = fabs(w->eIntResid[i + colptr*grd->nr]);
+getNextIterate.c:    for (i=0; i<grd->nr; i++) {
+getNextIterate.c:      w->colNew[i] = w->colHist[i+colptr*grd->nr];
+getNextIterate.c:      w->presNew_g[i+1] = w->presHist[i+colptr*grd->nr];
+getNextIterate.c:	w->eIntNew[i] = w->eIntHist[i+colptr*grd->nr];
+getNextIterate.c:    for (i=0; i<grd->nr; i++) {
+getNextIterate.c:	gsl_matrix_set(resid, i, j, w->colResid[i+j*grd->nr]);
+getNextIterate.c:	gsl_matrix_set(resid, i+grd->nr, j, w->presResid[i+j*grd->nr]);
+getNextIterate.c:	  gsl_matrix_set(resid, i+2*grd->nr, j, w->eIntResid[i+j*grd->nr]);
+getNextIterate.c:    for (i=0; i<grd->nr; i++) {
+getNextIterate.c:      for (i=0; i<grd->nr; i++) {
+getNextIterate.c:	  w->colHist[i+j*grd->nr];
+getNextIterate.c:	  w->presHist[i+j*grd->nr];
+getNextIterate.c:	    w->eIntHist[i+j*grd->nr];
+init.c:  grd->nr = nr;
+init.c:  if (!(grd->r_h = calloc(nr+1, sizeof(double)))) {
+init.c:  if (!(grd->r_g = calloc(nr+2, sizeof(double)))) {
+init.c:  if (!(grd->dr_g = calloc(nr+2, sizeof(double)))) {
+init.c:  if (!(grd->area = calloc(nr, sizeof(double)))) {
+init.c:  if (!(grd->vphi_g = calloc(nr+2, sizeof(double)))) {
+init.c:  if (!(grd->vphi_h = calloc(nr+1, sizeof(double)))) {
+init.c:  if (!(grd->beta_g = calloc(nr+2, sizeof(double)))) {
+init.c:  if (!(grd->beta_h = calloc(nr+1, sizeof(double)))) {
+init.c:  if (!(grd->psiEff_g = calloc(nr+2, sizeof(double)))) {
+init.c:  if (!(grd->g_h = calloc(nr+1, sizeof(double)))) {
+init.c:  if (!(grd->psiEff_h = calloc(nr+1, sizeof(double)))) {
+init.c:  grd->nr = nr;
+init.c:  grd->linear = linear;
+init.c:    grd->r_g[i] = r_g[i];
+init.c:    grd->r_h[i] = r_h[i];
+init.c:    grd->vphi_g[i] = vphi_g[i];
+init.c:    grd->vphi_h[i] = vphi_h[i];
+init.c:    grd->beta_g[i] = beta_g[i];
+init.c:    grd->beta_h[i] = beta_h[i];
+init.c:    grd->psiEff_g[i] = psiEff_g[i];
+init.c:    grd->psiEff_h[i] = psiEff_h[i];
+init.c:    grd->g_h[i] = g_h[i];
+init.c:  grd->r_g[nr] = r_g[nr];
+init.c:  grd->r_h[nr] = r_h[nr];
+init.c:  grd->vphi_g[nr] = vphi_g[nr];
+init.c:  grd->vphi_h[nr] = vphi_h[nr];
+init.c:  grd->beta_g[nr] = beta_g[nr];
+init.c:  grd->beta_h[nr] = beta_h[nr];
+init.c:  grd->psiEff_g[nr] = psiEff_g[nr];
+init.c:  grd->psiEff_h[nr] = psiEff_h[nr];
+init.c:  grd->g_h[nr] = g_h[nr];
+init.c:  grd->r_g[nr+1] = r_g[nr+1];
+init.c:  grd->vphi_g[nr+1] = vphi_g[nr+1];
+init.c:  grd->beta_g[nr+1] = beta_g[nr+1];
+init.c:  grd->psiEff_g[nr+1] = psiEff_g[nr+1];
+init.c:    grd->area[i] = M_PI*(SQR(grd->r_h[i+1]) - SQR(grd->r_h[i]));
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = grd->r_h[i] - grd->r_h[i-1];
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = log(grd->r_h[i]/grd->r_h[i-1]);
+init.c:  grd->dr_g[0] = grd->dr_g[1];
+init.c:  grd->dr_g[nr+1] = grd->dr_g[nr];
+init.c:  grd->nr = nr;
+init.c:  grd->linear = linear;
+init.c:      grd->r_h[i] = rmin + dx*i;      
+init.c:      grd->r_g[i] = rmin + (i-0.5)*dx;
+init.c:      grd->r_h[i] = exp(log(rmin) + dx*i);      
+init.c:      grd->r_g[i] = exp(log(rmin) + (i-0.5)*dx);
+init.c:  grd->dr_g[0] = grd->dr_g[1];
+init.c:  grd->dr_g[nr+1] = grd->dr_g[nr];
+init.c:  if ((grd->r_g[0] < rTab[0]) || (grd->r_g[nr+1] > rTab[nTab-1])) {
+init.c:    fprintf(stderr, "Error: table too small to cover required range r = %e to %e\n", grd->r_g[0], grd->r_g[1]);
+init.c:    grd->area[i] = M_PI*(SQR(grd->r_h[i+1]) - SQR(grd->r_h[i]));
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = grd->r_h[i] - grd->r_h[i-1];
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = log(grd->r_h[i]/grd->r_h[i-1]);
+init.c:  grd->dr_g[0] = grd->dr_g[1];
+init.c:  grd->dr_g[nr+1] = grd->dr_g[nr];
+init.c:  for (i=0; i<=nr+1; i++) rtmp[2*i] = grd->r_g[i];
+init.c:  for (i=0; i<=nr; i++) rtmp[2*i+1] = grd->r_h[i];
+init.c:    grd->vphi_g[i] = vphi[2*i];
+init.c:    grd->beta_g[i] = beta[2*i];
+init.c:    grd->psiEff_g[i] = psi[2*i] + SQR(vphi[2*i])/2.0;
+init.c:    grd->vphi_h[i] = vphi[2*i+1];
+init.c:    grd->beta_h[i] = beta[2*i+1];
+init.c:    grd->psiEff_h[i] = psi[2*i+1] + SQR(vphi[2*i+1])/2.0;
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:	1.0/(dx*grd->r_h[i]);
+init.c:  grd->nr = nr;
+init.c:  grd->linear = linear;
+init.c:    grd->r_h[i] = r_h[i];
+init.c:    grd->r_g[i] = r_g[i];
+init.c:  grd->r_g[nr+1] = r_g[nr+1];
+init.c:  if ((grd->r_g[0] < rTab[0]) || (grd->r_g[nr+1] > rTab[nTab-1])) {
+init.c:    fprintf(stderr, "Error: table too small to cover required range r = %e to %e\n", grd->r_g[0], grd->r_g[1]);
+init.c:    grd->area[i] = M_PI*(SQR(grd->r_h[i+1]) - SQR(grd->r_h[i]));
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = grd->r_h[i] - grd->r_h[i-1];
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = log(grd->r_h[i]/grd->r_h[i-1]);
+init.c:  grd->dr_g[0] = grd->dr_g[1];
+init.c:  grd->dr_g[nr+1] = grd->dr_g[nr];
+init.c:  for (i=0; i<=nr+1; i++) rtmp[2*i] = grd->r_g[i];
+init.c:  for (i=0; i<=nr; i++) rtmp[2*i+1] = grd->r_h[i];
+init.c:    grd->vphi_g[i] = vphi[2*i];
+init.c:    grd->beta_g[i] = beta[2*i];
+init.c:    grd->psiEff_g[i] = psi[2*i] + SQR(vphi[2*i])/2.0;
+init.c:    grd->vphi_h[i] = vphi[2*i+1];
+init.c:    grd->beta_h[i] = beta[2*i+1];
+init.c:    grd->psiEff_h[i] = psi[2*i+1] + SQR(vphi[2*i]+1)/2.0;
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:	1.0/(grd->r_g[i+1]-grd->r_g[i]);
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:	1.0/(log(grd->r_g[i+1]/grd->r_g[i])*grd->r_h[i]);
+init.c:  grd->nr = nr;
+init.c:  grd->linear = linear;
+init.c:      grd->r_h[i] = rmin + dx*i;      
+init.c:      grd->r_g[i] = rmin + (i-0.5)*dx;
+init.c:      grd->r_h[i] = exp(log(rmin) + dx*i);      
+init.c:      grd->r_g[i] = exp(log(rmin) + (i-0.5)*dx);
+init.c:    grd->area[i] = M_PI*(SQR(grd->r_h[i+1]) - SQR(grd->r_h[i]));
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = grd->r_h[i] - grd->r_h[i-1];
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = log(grd->r_h[i]/grd->r_h[i-1]);
+init.c:  grd->dr_g[0] = grd->dr_g[1];
+init.c:  grd->dr_g[nr+1] = grd->dr_g[nr];
+init.c:    grd->vphi_h[i] = sqrt(G*m/grd->r_h[i]);
+init.c:    grd->beta_h[i] = -0.5;
+init.c:    grd->psiEff_h[i] = -G*m/(2.0*grd->r_h[i]);
+init.c:    grd->vphi_g[i] = sqrt(G*m/grd->r_g[i]);
+init.c:    grd->beta_g[i] = -0.5;
+init.c:    grd->psiEff_g[i] = -G*m/(2.0*grd->r_g[i]);
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:	1.0/(dx*grd->r_h[i]);
+init.c:  grd->nr = nr;
+init.c:  grd->linear = linear;
+init.c:      grd->r_h[i] = rmin + dx*i;      
+init.c:      grd->r_g[i] = rmin + (i-0.5)*dx;
+init.c:      grd->r_h[i] = exp(log(rmin) + dx*i);      
+init.c:      grd->r_g[i] = exp(log(rmin) + (i-0.5)*dx);
+init.c:    grd->area[i] = M_PI*(SQR(grd->r_h[i+1]) - SQR(grd->r_h[i]));
+init.c:    grd->vphi_h[i] = vphi;
+init.c:    grd->beta_h[i] = 0.0;
+init.c:    grd->psiEff_h[i] = (0.5+log(grd->r_h[i]/grd->r_h[nr]))*SQR(vphi);
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = grd->r_h[i] - grd->r_h[i-1];
+init.c:    for (i=1; i<=grd->nr; i++) 
+init.c:      grd->dr_g[i] = log(grd->r_h[i]/grd->r_h[i-1]);
+init.c:  grd->dr_g[0] = grd->dr_g[1];
+init.c:  grd->dr_g[nr+1] = grd->dr_g[nr];
+init.c:    grd->vphi_g[i] = vphi;
+init.c:    grd->beta_g[i] = 0.0;
+init.c:    grd->psiEff_g[i] = (0.5+log(grd->r_g[i]/grd->r_h[nr]))*SQR(vphi);
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:      grd->g_h[i] = 2.0*M_PI / (grd->vphi_h[i]*(1+grd->beta_h[i])) *
+init.c:	1.0/(dx*grd->r_h[i]);
+init.c:  *colOut = (double *) calloc(nOut*grd->nr, sizeof(double));
+init.c:  *presOut = (double *) calloc(nOut*grd->nr, sizeof(double));
+init.c:    *eIntOut = (double *) calloc(nOut*grd->nr, sizeof(double));
+init.c:    *mSrcOut = (double *) calloc(nOut*grd->nr, sizeof(double));
+init.c:    *eSrcOut = (double *) calloc(nOut*grd->nr, sizeof(double));
+init.c:    *userOut = (double *) calloc(nOut*grd->nr*nUserOut, sizeof(double));
+init.c:  *colOut = (double *) realloc(*colOut, nOut*grd->nr*sizeof(double));
+init.c:  *presOut = (double *) realloc(*presOut, nOut*grd->nr*sizeof(double));
+init.c:    *eIntOut = (double *) realloc(*eIntOut, nOut*grd->nr*sizeof(double));
+init.c:    *mSrcOut = (double *) realloc(*mSrcOut, nOut*grd->nr*sizeof(double));
+init.c:    *eSrcOut = (double *) realloc(*eSrcOut, nOut*grd->nr*sizeof(double));
+init.c:				  nOut*grd->nr*nUserOut*sizeof(double));
+init.c:  free(grd->r_h);
+init.c:  free(grd->r_g);
+init.c:  free(grd->dr_g);
+init.c:  free(grd->area);
+init.c:  free(grd->vphi_g);
+init.c:  free(grd->vphi_h);
+init.c:  free(grd->beta_g);
+init.c:  free(grd->beta_h);
+init.c:  free(grd->psiEff_g);
+init.c:  free(grd->psiEff_h);
+init.c:  free(grd->g_h);
+setup.c:  *w_ptr = wkspAlloc(grd->nr);
+setup.c:    *dt = 1.0e-4*grd->r_h[0]/grd->vphi_h[0];
+setup.c:      for (i=0; i<grd->nr; i++) {
+setup.c:    for (i=0; i<grd->nr; i++)
+setup.c:    for (i=0; i<grd->nr; i++)
